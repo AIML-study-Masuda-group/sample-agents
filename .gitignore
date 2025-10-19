@@ -1,0 +1,381 @@
+# ==========================================
+# .gitignore - 生成AI協業スターターキット
+# ==========================================
+# このファイルはサンプルです。プロジェクトに応じて必要な項目を追加・削除してください。
+#
+# 基本方針:
+# - 秘密情報（鍵、トークン、パスワード）は絶対にコミットしない
+# - 生成物（ビルド成果物、依存関係）はコミットしない
+# - 環境固有のファイルはコミットしない
+
+# ==========================================
+# 秘密情報・認証情報（最重要）
+# ==========================================
+# これらのファイルは絶対にコミットしてはいけません
+
+# 環境変数ファイル
+.env
+.env.*
+!.env.example
+
+# 認証情報
+credentials.json
+service-account-key.json
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+id_rsa
+id_rsa.pub
+
+# API トークン・シークレット
+secrets/
+*.secret
+*.token
+api-keys.txt
+
+# AWS
+.aws/credentials
+.aws/config
+
+# GCP
+*-service-account.json
+application_default_credentials.json
+
+# ==========================================
+# Python プロジェクト
+# ==========================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.virtualenv/
+
+# uv
+.uv/
+uv.lock
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# ==========================================
+# Node.js / TypeScript プロジェクト
+# ==========================================
+
+# Dependencies
+node_modules/
+jspm_packages/
+
+# Production build
+dist/
+build/
+out/
+.next/
+.nuxt/
+.cache/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pnpm-debug.log*
+
+# Testing
+coverage/
+
+# Environment files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vercel
+.vercel
+
+# Next.js
+.next/
+out/
+
+# Gatsby
+.cache/
+public/
+
+# Package manager locks (プロジェクトによっては含める場合もあります)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# ==========================================
+# Terraform
+# ==========================================
+
+# State files
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+
+# Variable files (環境固有の値を含む)
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+!*.tfvars.json.example
+
+# Terraform directory
+.terraform/
+.terraform.lock.hcl
+
+# Crash log files
+crash.log
+crash.*.log
+
+# Override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# CLI configuration files
+.terraformrc
+terraform.rc
+
+# Terraform module artifacts
+*.zip
+
+# ==========================================
+# Go
+# ==========================================
+
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary
+*.test
+
+# Output of the go coverage tool
+*.out
+
+# Dependency directories
+vendor/
+
+# ==========================================
+# Rust
+# ==========================================
+
+# Build artifacts
+target/
+Cargo.lock
+
+# ==========================================
+# Java / Gradle / Maven
+# ==========================================
+
+# Compiled class files
+*.class
+
+# Log file
+*.log
+
+# Package Files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Gradle
+.gradle/
+build/
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# ==========================================
+# Ruby
+# ==========================================
+
+# Gem files
+*.gem
+.bundle/
+vendor/bundle
+
+# RVM
+.rvmrc
+
+# rbenv
+.ruby-version
+
+# ==========================================
+# Docker
+# ==========================================
+
+# Docker override files
+docker-compose.override.yml
+docker-compose.override.yaml
+
+# ==========================================
+# IDE・エディタ
+# ==========================================
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+.*.sw?
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# ==========================================
+# OS
+# ==========================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.directory
+.Trash-*
+
+# ==========================================
+# mise
+# ==========================================
+
+# mise local configuration
+.mise.local.toml
+
+# ==========================================
+# その他
+# ==========================================
+
+# Backup files
+*.bak
+*.backup
+*.tmp
+*.temp
+
+# Logs
+logs/
+*.log
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Archives
+*.tar
+*.tar.gz
+*.zip
+*.7z
+
+# ==========================================
+# プロジェクト固有の除外ルール
+# ==========================================
+# 以下にプロジェクト固有の除外ルールを追加してください
+
+# 例: 特定のディレクトリを除外
+# data/raw/
+# output/
+
+# 例: 特定のファイルパターンを除外
+# *.local.json
+
+# 例: ただし特定のファイルは含める
+# !important-file.json

@@ -1,0 +1,135 @@
+# mise.toml - プロジェクト固有のツールバージョンとタスク定義
+#
+# このファイルはサンプルです。プロジェクトに応じて必要なツールとタスクを追加・削除してください。
+#
+# 使い方:
+# 1. [tools] セクション: プロジェクトで使うツールとバージョンを定義
+# 2. [tasks] セクション: よく使うコマンドをタスクとして定義
+# 3. 実行: `mise install` でツールをインストール、`mise run <task>` でタスクを実行
+
+min_version = "2025.10.0"
+
+# ==========================================
+# ツール定義
+# ==========================================
+# プロジェクトに必要なツールを定義します。
+# 不要なツールは削除し、必要なツールを追加してください。
+
+[tools]
+# === 必須ツール（ほぼすべてのプロジェクトで使用） ===
+gh = "2.81.0"  # GitHub CLI（PR作成、Issue管理など）
+
+# === プロジェクトタイプ別のツール ===
+# 以下から必要なものを選択してください
+
+# --- Python プロジェクトの場合 ---
+python = "3.11"      # Python バージョン
+uv = "latest"        # Python 依存関係管理ツール（高速）
+# ruff = "latest"    # Python リンター（オプション）
+# mypy = "latest"    # 型チェッカー（オプション）
+
+# --- Node.js / TypeScript プロジェクトの場合 ---
+# node = "20.x"      # Node.js バージョン
+# pnpm = "latest"    # パッケージマネージャー（npm の代わり、オプション）
+
+# --- Terraform / インフラ管理の場合 ---
+terraform = "1.13.3"  # Terraform バージョン
+
+# --- その他のツール（必要に応じて追加） ---
+# go = "1.22"        # Go 言語
+# rust = "latest"    # Rust 言語
+# java = "17"        # Java
+# ruby = "3.3"       # Ruby
+# aws-cli = "2.x"    # AWS CLI
+# gcloud = "latest"  # Google Cloud CLI
+
+# ==========================================
+# タスク定義
+# ==========================================
+# よく使うコマンドをタスクとして定義します。
+# `mise run <task>` で実行できます。
+
+[tasks]
+
+# ==========================================
+# GitHub CLI タスク（共通）
+# ==========================================
+"gh:auth" = "gh auth status || gh auth login"
+"gh:pr"   = "gh pr create --base main --web"
+
+# ==========================================
+# Python プロジェクトのタスク
+# ==========================================
+# Python プロジェクトの場合、以下のコメントを外してください
+
+"py:sync" = "uv sync"                          # 依存関係のインストール
+"py:test" = "uv run pytest -v"                 # テスト実行
+"py:lint" = "uv run ruff check ."              # リント
+"py:fmt"  = "uv run ruff format ."             # フォーマット
+
+# requirements.txt を生成する場合（Cloud Functions などでデプロイする場合）
+# "py:freeze" = """
+#   uv pip compile pyproject.toml -o requirements.txt && \
+#   echo 'requirements.txt generated from pyproject.toml'
+# """
+
+# 型チェック（mypy を使う場合）
+# "py:typecheck" = "uv run mypy src/"
+
+# カバレッジ付きテスト
+# "py:coverage" = "uv run pytest --cov=src --cov-report=html"
+
+# ==========================================
+# Node.js / TypeScript プロジェクトのタスク
+# ==========================================
+# Node.js プロジェクトの場合、以下のコメントを外してください
+
+# "node:install" = "npm install"               # 依存関係のインストール
+# "node:build"   = "npm run build"             # ビルド
+# "node:test"    = "npm test"                  # テスト実行
+# "node:lint"    = "npm run lint"              # リント
+# "node:fmt"     = "npm run format"            # フォーマット
+# "node:dev"     = "npm run dev"               # 開発サーバー起動
+
+# TypeScript の型チェック
+# "node:typecheck" = "tsc --noEmit"
+
+# ==========================================
+# Terraform プロジェクトのタスク
+# ==========================================
+# Terraform プロジェクトの場合、以下のコメントを外してください
+
+"tf:init"     = "terraform -chdir=terraform init -upgrade"
+"tf:fmt"      = "terraform -chdir=terraform fmt -recursive"
+"tf:validate" = "terraform -chdir=terraform validate"
+"tf:plan"     = "terraform -chdir=terraform plan"
+"tf:apply"    = "terraform -chdir=terraform apply"
+
+# 特定の環境向けの plan/apply（複数環境がある場合）
+# "tf:plan:dev"  = "terraform -chdir=terraform plan -var-file=environments/dev.tfvars"
+# "tf:apply:dev" = "terraform -chdir=terraform apply -var-file=environments/dev.tfvars"
+# "tf:plan:prod" = "terraform -chdir=terraform plan -var-file=environments/prod.tfvars"
+
+# ==========================================
+# カスタムタスクの例
+# ==========================================
+# プロジェクト固有のタスクを追加してください
+
+# データベースマイグレーション
+# "db:migrate" = "uv run alembic upgrade head"
+# "db:rollback" = "uv run alembic downgrade -1"
+
+# Docker 操作
+# "docker:up" = "docker-compose up -d"
+# "docker:down" = "docker-compose down"
+# "docker:logs" = "docker-compose logs -f"
+
+# ローカル開発サーバー起動
+# "dev" = "uv run uvicorn main:app --reload"
+
+# CI で実行するタスク
+# "ci:test" = """
+#   mise run py:lint && \
+#   mise run py:test && \
+#   mise run py:typecheck
+# """
