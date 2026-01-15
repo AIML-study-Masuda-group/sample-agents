@@ -1,27 +1,10 @@
-# AIML Research Template
+# 生成AI協業スターターキット (sample-agents)
 
-LLM時代のAI/ML研究を加速するためのサンプルリポジトリです。
+Claude Code、GitHub Copilot、Codexなどの生成AIツールと人が協業して開発を進めるためのプロジェクトテンプレートです。
 
-## コンセプト
+## 概要
 
-新しい研究プロジェクトを始める際に、このリポジトリをcloneしてすぐに作業を開始できることを目指しています。
-
-- **LLMとの協業を前提**: Claude Code、GitHub Copilotなどの生成AIツールと効率的に協業できる構成
-- **研究の再現性**: mise によるツールバージョン管理で、環境差異による問題を排除
-- **迅速な立ち上げ**: clone → mise install → 即座に研究開始
-
-```bash
-# 使い方
-git clone https://github.com/ipnki/sample-research-repository.git my-research-project
-cd my-research-project
-mise install
-```
-
----
-
-## 概要（元sample-agentsの内容）
-
-以下は元となったsample-agentsテンプレートの内容です。生成AIと人が効率的に協業できるようセットアップ方法をまとめています。
+このリポジトリは、新しいGitHubリポジトリから作業を始める際に、生成AIと人が効率的に協業できるようセットアップ方法をまとめたサンプルです。このフォルダをコピーして使うことで、プロジェクトの立ち上げがスムーズになります。
 
 ## 協業の基本方針
 
